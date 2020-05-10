@@ -361,11 +361,14 @@ void CmdAddText_hk(int a1, int a2, const char* fmt, const char* dummy0, int dumm
 		else if (dummy0[8] == char(116) && dummy0[9] == char(114)) //tr
 		{
 			// std::cout << "Song: " << dummy0 << std::endl;
-			const char* dummy = dummy0;
-			vars::lastSong = dummy;
-			vars::playing = true;
+
 			std::string str(dummy0, strnlen(dummy0, 36));
 			DecryptedSong.currentSong = str;
+			std::string metadata = HttpRequest("api.spotify.com", "/v1/tracks/" + DecryptedSong.currentSong.substr(DecryptedSong.currentSong.find("spotify:track:") + 14), GetAccessToken(), true); // 14
+			DecryptedSong.songName = strtok((char*)(metadata.substr(metadata.find("is_local") + 31)).c_str(), "\"");
+
+			vars::lastSong = DecryptedSong.songName.c_str();
+			vars::playing = true;
 			__position = 0;
 		}
 	}

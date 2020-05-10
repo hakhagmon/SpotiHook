@@ -20,9 +20,9 @@ namespace GUI {
 
 	void renderMenu() {
 		zgui::poll_input("CEF-OSC-WIDGET");
-		if (zgui::begin_window("advancedHook", { 300, 350 }, 5, zgui::zgui_window_flags_none))
+		if (zgui::begin_window("advancedHook", { 280, 80 }, 5, zgui::zgui_window_flags_none))
 		{
-			zgui::begin_groupbox("Spotify", { 200, 200 }, zgui::zgui_groupbox_flags::zgui_groupbox_flags_legacy_design);
+			zgui::begin_groupbox("Spotify", { 250, 40 }, zgui::zgui_groupbox_flags::zgui_groupbox_flags_legacy_design);
 			if (vars::playing)
 			{
 				showSong(vars::lastSong);
