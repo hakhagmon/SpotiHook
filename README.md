@@ -12,3 +12,6 @@ Most of the functions come from meik97's XSpotify project (huge shoutouts to him
 * XSpotify by meik97
 * OpenSSL
 * zgui by zxvnme
+
+## Thanks to
+harakirinox
