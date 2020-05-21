@@ -1,6 +1,7 @@
 #pragma once
 #include "imports.h"
 
+<<<<<<< Updated upstream
 DWORD CREATETRACK = 0xC58980;
 DWORD CLOSETRACK = 0xC58130;
 DWORD OPENTRACK = 0xC59E10;
@@ -10,6 +11,18 @@ DWORD AES_SET_ENCRYPT_KEY = 0x106B920;
 DWORD ENABLESKIPS = 0x745DB0;
 DWORD GETFILEID = 0x70B460;
 DWORD SIGNAL = 0xB480B0;
+=======
+//1.1.32.618.gda5638a6
+DWORD CREATETRACK = 0xC6F750;
+DWORD CLOSETRACK = 0xC6F230;
+DWORD OPENTRACK = 0xC703D0;
+DWORD CMDADDTEXT = 0x10938B0;
+DWORD SETBITRATE = 0x5B0970;
+DWORD AES_SET_ENCRYPT_KEY = 0x10731C0; //broken
+DWORD ENABLESKIPS = 0x72CEC0;
+DWORD GETFILEID = 0x6E8420; //might be wrong
+DWORD SIGNAL = 0xB63DF0;
+>>>>>>> Stashed changes
 
 //CreateTrack
 typedef void(__thiscall* CreateTrack_t)(void* _this, int a2, int a3, double speed, int a5, int a6, int flag, int a8, int a9);
