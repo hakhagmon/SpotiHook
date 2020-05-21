@@ -195,7 +195,8 @@ void __declspec(naked) AES_set_encrypt_key_stub(unsigned int* key, DWORD* userKe
 	}
 }
 
-void AES_set_encrypt_key_hk(unsigned int* key, DWORD* userKey, int bits)
+//TODO: reverse new func
+void AES_set_encrypt_key_hk(unsigned int* key, DWORD* userKey, int bits, char a5)
 {
 	unsigned char decrypt_key[16] = { 0 };
 	char decrypt_key_str[33] = { 0 };
@@ -320,7 +321,7 @@ void __declspec(naked) __fastcall Signal_stub(void* _this, DWORD edx, int a2, in
 		push    ebp
 		mov     ebp, esp
 		push - 1
-		push    117A780h
+		push    118B130h
 		push    Signal_back
 		retn
 	}
@@ -332,7 +333,7 @@ void __fastcall Signal_hk(void* _this, DWORD edx, int a2, int a3)
 	Signal_stub(_this, edx, a2, a3);
 }
 
-void __declspec(naked) CmdAddText_stub(int a1, int a2, const char* fmt, const char* dummy0, int dummy1, int dummy2, int dummy3, int dummy4, int dummy5)
+void __declspec(naked) CmdAddText_stub(int a1, int a2, int a3, int a4, int a5, const char* fmt, const char* dummy0, int dummy1, int dummy2, int dummy3, int dummy4, int dummy5)
 {
 	__asm
 	{
@@ -346,7 +347,7 @@ void __declspec(naked) CmdAddText_stub(int a1, int a2, const char* fmt, const ch
 	}
 }
 
-void CmdAddText_hk(int a1, int a2, const char* fmt, const char* dummy0, int dummy1, int dummy2, int dummy3, int dummy4, int dummy5)
+void CmdAddText_hk(int a1, int a2, int a3, int a4, int a5, const char* fmt, const char* dummy0, int dummy1, int dummy2, int dummy3, int dummy4, int dummy5)
 {
 	if (fmt[8] == char(116) && fmt[9] == char(114) && fmt[10] == char(97) && fmt[11] == char(99) && fmt[12] == char(107) && fmt[13] == char(95) && fmt[14] == char(117) && fmt[15] == char(114) && fmt[16] == char(105))
 	{
@@ -360,12 +361,13 @@ void CmdAddText_hk(int a1, int a2, const char* fmt, const char* dummy0, int dumm
 		}
 		else if (dummy0[8] == char(116) && dummy0[9] == char(114)) //tr
 		{
-			// std::cout << "Song: " << dummy0 << std::endl;
+			std::cout << "Song: " << dummy0 << std::endl;
 
 			std::string str(dummy0, strnlen(dummy0, 36));
 			DecryptedSong.currentSong = str;
 			std::string metadata = HttpRequest("api.spotify.com", "/v1/tracks/" + DecryptedSong.currentSong.substr(DecryptedSong.currentSong.find("spotify:track:") + 14), GetAccessToken(), true); // 14
 			DecryptedSong.songName = strtok((char*)(metadata.substr(metadata.find("is_local") + 31)).c_str(), "\"");
+
 
 			vars::lastSong = DecryptedSong.songName.c_str();
 			vars::playing = true;
@@ -373,7 +375,7 @@ void CmdAddText_hk(int a1, int a2, const char* fmt, const char* dummy0, int dumm
 		}
 	}
 
-	CmdAddText_stub(a1, a2, fmt, dummy0, dummy1, dummy2, dummy3, dummy4, dummy5);
+	CmdAddText_stub(a1, a2, a3, a4, a5, fmt, dummy0, dummy1, dummy2, dummy3, dummy4, dummy5);
 }
 
 void __declspec(naked) GetFileID_stub(int* a1, int a2)
