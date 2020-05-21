@@ -23,5 +23,5 @@ bool ParseUpdateUrl_hk(int a1, int a2)
 
 void XPatchAutoUpdates()
 {
-	Hook::InstallCall((void*)0x56CE1A, ParseUpdateUrl_hk);
+	Hook::InstallCall((void*)0x5F4168, ParseUpdateUrl_hk);
 }
