@@ -39,23 +39,23 @@ void __fastcall OpenTrack_hk(void* _this, DWORD edx, int a2, int a3, int a4, __i
 }
 
 //todo:
-void __declspec(naked) __fastcall CreateTrack_stub(int a2, int a3, float a1f, int a4, double speed, int a6, int a7, int flag, int a8, int a9)
+void __declspec(naked) __fastcall CreateTrack_stub(float a1f, int a2, int a3, int a4, double speed, int a6, int a7, int flag, int a8, int a9)
 {
 	__asm
 	{
 		push    ebp
 		mov     ebp, esp
 		push - 1
-		push    119CC22h
+		push    11A7D62h
 		push    CreateTrack_back
 		retn
 	}
 }
 
-void __fastcall CreateTrack_hk(int a2, int a3, float a1f, int a4, double speed, int a6, int a7, int flag, int a8, int a9)
+void __fastcall CreateTrack_hk(float a1f, int a2, int a3, int a4, double speed, int a6, int a7, int flag, int a8, int a9)
 {
 	double newspeed = 8;
-	CreateTrack_stub(a2, a3, a1f, a4, newspeed, a6, a7, flag, a8, a9);
+	CreateTrack_stub(a1f, a2, a3, a4, newspeed, a6, a7, flag, a8, a9);
 }
 
 void __declspec(naked) __fastcall EnableSkips_hk(void* _this, DWORD edx)

@@ -1,19 +1,21 @@
 #pragma once
 #include "imports.h"
 
-//1.1.32.618.gda5638a6
-DWORD CREATETRACK = 0xC6F750;
+//1.1.33.569.gced9e0f5
+DWORD CREATETRACK = 0xC76EB0;
 DWORD CLOSETRACK = 0xC6F230;
-DWORD OPENTRACK = 0xC703D0;
-DWORD CMDADDTEXT = 0x10938B0;
+DWORD OPENTRACK = 0xC77B30;
+DWORD CMDADDTEXT = 0x109ED50;
 DWORD SETBITRATE = 0x5B0970;
 DWORD AES_SET_ENCRYPT_KEY = 0x10731C0;
 DWORD ENABLESKIPS = 0x72CEC0;
 DWORD GETFILEID = 0x6E8420;
 DWORD SIGNAL = 0xB63DF0;
 
+
 //CreateTrack
-typedef void(__fastcall* CreateTrack_t)(int a2, int a3, float a1, int a4, double speed, int a6, int a7, int flag, int a8, int a9);
+//typedef void(__fastcall* CreateTrack_t)(int a2, int a3, float a1, int a4, double speed, int a6, int a7, int flag, int a8, int a9);
+typedef void(__fastcall* CreateTrack_t)(float a1f, int a2, int a3, int a4, double speed, int a6, int a7, int flag, int a8, int a9);
 extern CreateTrack_t CreateTrack;
 CreateTrack_t CreateTrack = (CreateTrack_t)CREATETRACK;
 
@@ -23,6 +25,7 @@ extern CloseTrack_t CloseTrack;
 CloseTrack_t CloseTrack = (CloseTrack_t)CLOSETRACK;
 
 //OpenTrack
+//todo: thiscall could be wrong
 typedef  void(__thiscall* OpenTrack_t)(void* _this, int a2, int a3, int a4, __int64 position, int a6, int a7);
 extern OpenTrack_t OpenTrack;
 OpenTrack_t OpenTrack = (OpenTrack_t)OPENTRACK;
@@ -43,11 +46,11 @@ extern EnableSkips_t EnableSkips;
 EnableSkips_t EnableSkips = (EnableSkips_t)ENABLESKIPS;
 
 //GetFileID
-typedef void(__cdecl* GetFileID_t)(int* a1, int a2);
+typedef void(__thiscall* GetFileID_t)(void* _this, int* a2, int a3);
 extern GetFileID_t GetFileID;
 GetFileID_t GetFileID = (GetFileID_t)GETFILEID;
 
-//todo: not working
+//todo: broken?
 //aes_set_encrypt_key
 typedef void(__cdecl* aes_set_encrypt_key_t)(unsigned int* key, DWORD* userKey, int bits, const char a4); // char a4 ??
 extern aes_set_encrypt_key_t aes_set_encrypt_key;
