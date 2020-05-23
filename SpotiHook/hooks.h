@@ -3,18 +3,17 @@
 
 //1.1.33.569.gced9e0f5
 DWORD CREATETRACK = 0xC76EB0;
-DWORD CLOSETRACK = 0xC6F230;
+DWORD CLOSETRACK = 0xC76990;
 DWORD OPENTRACK = 0xC77B30;
 DWORD CMDADDTEXT = 0x109ED50;
 DWORD SETBITRATE = 0x5AD870;
 DWORD AES_SET_ENCRYPT_KEY = 0x107E6D0;
 DWORD ENABLESKIPS = 0x72BB80;
-DWORD GETFILEID = 0x6E8420;
+DWORD GETFILEID = 0x6F2140;
 DWORD SIGNAL = 0xB69E80;
 
 
 //CreateTrack
-//typedef void(__fastcall* CreateTrack_t)(int a2, int a3, float a1, int a4, double speed, int a6, int a7, int flag, int a8, int a9);
 typedef void(__fastcall* CreateTrack_t)(float a1f, int a2, int a3, int a4, double speed, int a6, int a7, int flag, int a8, int a9);
 extern CreateTrack_t CreateTrack;
 CreateTrack_t CreateTrack = (CreateTrack_t)CREATETRACK;
@@ -46,7 +45,7 @@ extern EnableSkips_t EnableSkips;
 EnableSkips_t EnableSkips = (EnableSkips_t)ENABLESKIPS;
 
 //GetFileID
-typedef void(__thiscall* GetFileID_t)(void* _this, int* a2, int a3);
+typedef void(__thiscall* GetFileID_t)(void* _this, int* a1, int a2);
 extern GetFileID_t GetFileID;
 GetFileID_t GetFileID = (GetFileID_t)GETFILEID;
 
