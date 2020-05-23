@@ -16,7 +16,7 @@
 #include "hooking.h"
 
 __int64 __position;
-DWORD CmdAddText_back = CMDADDTEXT + 0x10;
+DWORD CmdAddText_back = CMDADDTEXT + 0x11;
 DWORD OpenTrack_back = OPENTRACK + 10;
 DWORD CreateTrack_back = CREATETRACK + 10;
 
